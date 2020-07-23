@@ -6,14 +6,14 @@
           <router-link to="/"><img src="/static/image/logo.png" alt=""></router-link>
         </div>
         <ul class="nav full-left" v-for="value in list_all">
-          <li><span>{{ value.title }}</span></li>
+          <li><router-link to="/course">{{ value.title }}</router-link></li>
         </ul>
 
         <div class="login-bar full-right" v-if="name">
           <h3>欢迎:{{ name }}</h3>
           <div class="shop-cart full-left">
             <img src="/static/image/cart.svg" alt="">
-            <span><router-link to="/cart">购物车</router-link></span>
+            <span><router-link to="/cart">{{ this.$store.state.cart_length }}购物车</router-link></span>
           </div>
           <div class="login-box full-left">
             <a href="javascript:;" @click="tuichu">安全退出</a>
@@ -61,7 +61,7 @@
           url: `http://127.0.0.1:8000/user/home_nav/`,
           method: "get",
         }).then(response => {
-          console.log(response);
+          // console.log(response);
           this.list_all = response.data
         }).catch(error => {
           console.log(error);

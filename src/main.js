@@ -4,6 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// 播放视频配置
+require('video.js/dist/video-js.css');
+require('vue-video-player/src/custom-theme.css');
+import VideoPlayer from 'vue-video-player'
+
+Vue.use(VideoPlayer);
+
 // axios配置
 import axios from "axios";
 
@@ -21,11 +28,13 @@ import "../static/css/global.css"
 import "../static/js/gt"
 
 Vue.config.productionTip = false
+import store from './store/index'
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
